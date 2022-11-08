@@ -23,7 +23,6 @@ class Mic {
     }
   
     startAudio(mic) {
-      console.log(mic.dev);
       if (getAudioContext().state !== "running") {
         getAudioContext().resume();
         mic.dev.start();

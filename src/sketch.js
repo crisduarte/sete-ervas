@@ -61,7 +61,6 @@ function newRecognition() {
 function setup() {
   let cnv = createCanvas(windowWidth - 10, windowHeight - 120);
   mic = new Mic(cnv);
-  console.log(mic);
   pixelDensity(1);
   background(0);
   for (let i = 0; i < n; i++) {
