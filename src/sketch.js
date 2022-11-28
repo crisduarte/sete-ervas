@@ -8,8 +8,8 @@ let rdb, chunks = [];
 let psel = 0, sel = 0;
 let scn, scn_last, scn_time;
 let lang = 'en';
-let colors = ["#03033F", "#03033F", "#03033F", "#03033F", "#03033F",
-              "#03033F", "#03033F", "#03033F"];//, "#6D6106"];
+let colors = ["#03033F", "#03033F", "#03033F", "#03033F", "#03033F", "#03033F",
+              "#03033F", "#03033F", "#8ea604"];//, "#6D6106"];
 let plants = { 
   'en': [ 'none', 'rosemary' , 'dumb cane' , 'snake plant', 'petiveria', 'pepper', 'rue plant', 'basil', 'nettle' ],
   'pt': [ 'nenhuma', 'alecrim', 'comigo-ninguém-pode', 'espada de são jorge', 'guiné', 'pimenta', 'arruda', 'manjericão', 'urtiga' ]
