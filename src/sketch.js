@@ -12,11 +12,14 @@ let colors = ["#03033F", "#03033F", "#03033F", "#03033F", "#03033F", "#03033F",
               "#03033F", "#03033F", "#8ea604"];//, "#6D6106"];
 let plants = { 
   'en': [ 'none', 'rosemary' , 'dumb cane' , 'snake plant', 'petiveria', 'pepper', 'rue plant', 'basil', 'nettle' ],
-  'pt': [ 'nenhuma', 'alecrim', 'comigo-ninguém-pode', 'espada de são jorge', 'guiné', 'pimenta', 'arruda', 'manjericão', 'urtiga' ]
+  'pt': [ 'nenhuma', 'alecrim', 'comigo ninguém pode', 'espada de são jorge', 'guiné', 'pimenta', 'arruda', 'manjericão', 'urtiga' ]
 };
 let plants_panel;
+let sound
 
 function preload() {
+  sound = loadSound("aud/chirps.mp3");
+  sound.setLoop(true);
   let img1 = loadImage("img/rosemary.jpg");
   let img2 = loadImage("img/dumb_cane.jpg");
   let img3 = loadImage("img/snake_plant.jpg");
@@ -88,9 +91,6 @@ function draw() {
     newRecognition();
   }
   // color
-  // if (sel != psel) {
-  //   background(0);
-  // }
   let bg = color(colors[sel]);
   let ds = 1 / max(width, height);
   // step increment
