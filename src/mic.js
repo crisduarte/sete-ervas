@@ -14,7 +14,6 @@ class Mic {
       if (getAudioContext().state !== "running") {
         if (this.canvas) this.canvas.mousePressed(() => { 
           this.startAudio(this);
-          sound.play(); 
         });
         this.showGestureMsg();
         return false;

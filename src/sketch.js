@@ -11,11 +11,12 @@ let lang = 'en';
 let colors = ["#03033F", "#03033F", "#03033F", "#03033F", "#03033F", "#03033F",
               "#03033F", "#03033F", "#8ea604"];//, "#6D6106"];
 let plants = { 
-  'en': [ 'none', 'rosemary' , 'dumb cane' , 'snake plant', 'petiveria', 'pepper', 'rue plant', 'basil', 'nettle' ],
+  'en': [ 'none', 'rosemary' , 'dumb cane' , 'snake plant', 'guinea henweed', 'pepper', 'rue plant', 'basil', 'nettle' ],
   'pt': [ 'nenhuma', 'alecrim', 'comigo ninguém pode', 'espada de são jorge', 'guiné', 'pimenta', 'arruda', 'manjericão', 'urtiga' ]
 };
 let plants_panel;
-let sound
+let sound;
+let lastRecognition;
 
 function preload() {
   sound = loadSound("aud/chirps.mp3");
@@ -54,6 +55,7 @@ function newRecognition() {
     output.innerHTML = "<b>Recognition:</b> voice recognition is only \nsupported in Chrome or Edge browsers";
     output.classList.remove("hide");
   });
+  lastRecognition = millis();
 }
 
 function setup() {
@@ -82,9 +84,12 @@ function setup() {
 function draw() {
   // mic
   if (!mic.isAudioRunning()) return;
+  // play sound
+  if (!sound.isPlaying()) sound.play();
   let level = mic.getLevel();
   // lang
-  if (rec.isRecognitionRunning() && lang != rdb.value()) {
+  if (rec.isRecognitionRunning() && lang != rdb.value() && 
+      (lastRecognition && (millis() - lastRecognition) > 8000)) {
     lang = rdb.value();
     plants_panel.html(plants[lang].slice(1).join(" | "));
     // recognition
